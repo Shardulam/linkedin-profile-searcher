@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/linkedin_profile_searcher
+    username: Sathvika   # use your macOS username
+    password:            # leave blank if no password is set
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # or update / create / create-drop as per your need
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    url: jdbc:postgresql://localhost:5432/linkedin_profile_searcher_local
+    user: Sathvika       # match your datasource username
+    password:            # leave blank
+    baseline-version: 1.0
+    baseline-on-migrate: true
+    baseline-description: baseline-description
+    locations: classpath:db/migration
+
+  profiles:
+    active: local
+
+com:
+  phantom:
+    buster:
+      phantom-id: ${PHANTOM_ID:814818359720730}
+      phantom-buster-api-key: ${PHANTOM_BUSTER_API_KEY:GXDWqkWxhbHATLTWjNbnyaNwhmEfEjaidJmCQHD8zDk}
+      linked-in-session-cookie: ${LINKED_IN_SESSION_COOKIE}
+  linkedin:
+    searcher:
+      base-url: http://localhost:${server.port}
+
+server:
+  port: 8080
