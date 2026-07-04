@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS university
 (
-    id   uuid PRIMARY KEY,
+    id   UUID PRIMARY KEY,
     name VARCHAR(255)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS alumni
 (
-    id                   uuid PRIMARY KEY,
+    id                   UUID PRIMARY KEY,
     title                VARCHAR(255),
     full_name            VARCHAR(255),
     profile_head_line    VARCHAR(255),
@@ -15,9 +15,9 @@ CREATE TABLE IF NOT EXISTS alumni
     current_organization VARCHAR(255),
     profile_url          VARCHAR(500),
     company_url          VARCHAR(500),
-    university_id        uuid,
+    university_id        UUID,
     passed_out_year      INT,
     CONSTRAINT fk_university
-    FOREIGN KEY (university_id)
-    REFERENCES university (id)
-    );
+        FOREIGN KEY (university_id)
+            REFERENCES university (id)
+);
